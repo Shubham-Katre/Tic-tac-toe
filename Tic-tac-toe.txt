@@ -1,0 +1,94 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+       
+     Scanner sc=new Scanner(System.in);
+   int n=sc.nextInt();
+        int[][] arr=new int[n][n];
+        
+        for (int i=0; i<n; i++){
+            for (int j=0; j<n; j++){
+            arr[i][j]=sc.nextInt();
+                
+        }
+        }
+          String finalAns=TicTacToe(arr,n);
+        System.out.println(finalAns);
+    }
+    // check all the elemnt of the row.
+    public static boolean row(int[][] arr,int i, int n ){
+        
+        int temp=arr[i][0];
+        for (int j=0; j<n; j++){
+                if (arr[i][j]!=temp){
+                    return false;
+        }
+        }
+        return true;
+    }
+    // check all the elemnt of the coloum.
+    public static boolean coloum(int[][] arr,int i, int n ){
+        
+        int temp=arr[i][0];
+        for (int j=0; j<n; j++){
+                if (arr[j][i]!=temp){
+                    return false;
+        }
+        }
+        return true;
+    }
+    // check all the elemnt of diagonal 1st.
+     public static boolean diag1(int[][] arr,int n ){
+        
+        int i=0;
+         int j=0;
+         int temp=arr[i][j];
+        while(i<n && j<n){
+                if (temp!=arr[i][j]){
+                    
+                    return false;
+                    
+        }
+            i++;
+            j++;
+        }
+        return true;
+    }  
+    // check all the elemnt of diagonal 2nd.
+     public static boolean diag2(int[][] arr,int n ){
+        
+        int i=0;
+         int j=n-1;
+         int temp=arr[i][j];
+        while(i<n && j>=0){
+                if (temp!=arr[i][j]){
+                    
+                    return false;
+                    
+        }
+            i++;
+            j--;
+        }
+        return true;
+    }  
+    
+    
+     public static String TicTacToe(int[][] arr, int n ){
+        
+        
+        for (int i=0; i<n; i++){
+                if (row(arr,i,n) || coloum(arr,i,n)|| diag1(arr,n)||diag2(arr,n)){
+                    return "Games End";
+                   
+        }
+        
+       
+         }
+         return "Draw";
+    }
+    
+    
+}
